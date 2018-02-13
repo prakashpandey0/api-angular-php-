@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>API PHP</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+</head>
+<body ng-app="myapp" ng-controller="myctrl">
+
+<table>
+	
+	<tr ng-repeat = "x in data">
+		<td>{{$index+1}}</td>
+		<td>{{x.name}}</td>
+	</tr>
+</table>
+		<script type="text/javascript">
+			var app = angular.module("myapp", []);	
+			 app.controller('myctrl',function($scope,$http){
+				$http.get("http://localhost/php api/simple.php")
+				.then(function(response){
+					console.log(response.data);
+					//	$scope.show = response.data;
+
+					$scope.data = response.data
+				});
+			});
+		</script>
+</body>
+</html>
